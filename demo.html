@@ -1,0 +1,135 @@
+
+<html>
+<head>
+	
+	<title>Game Ban</title>
+	<!--
+	<link rel="stylesheet" type="text/css" href="css/register.css">
+	-->
+	<script type="text/javascript">
+
+	var  flag1 = false, flag2 = false, flag3 = false;
+
+	function JTrim(s)
+	{
+    return s.replace(/(^\s*)|(\s*$)/g, "");
+	}
+
+	function judgement1(obj){
+		var name = obj.value;
+		if(JTrim(name) == ""){
+			document.getElementById("userName").innerHTML = "<font color = 'red'>UserName IS EMPTY!!!</font>";
+		}
+		else{
+			flag1= true;  
+        	document.getElementById("userName").innerHTML = "<font color = 'green'>UserName is valid</font>"; 
+		}
+	}	
+
+	function judgement2(obj){
+		var pwd = obj.value;
+		if(pwd.length == 0){
+    	    document.getElementById("password1").innerHTML = "<font color = 'red'>PassWord can not be EMPTY!!!</font>"; 
+		}
+		else if(pwd.length < 6){
+			document.getElementById("password1").innerHTML = "<font color = 'red'>PassWord must be longer than 6 values!!!</font>"; 
+			
+			document.register.password.value = "";
+		}
+		else{
+			flag2 = true;
+			document.getElementById("password1").innerHTML = "<font color = 'green'>PassWord is valid</font>"
+		}
+	}
+
+	function judgement3(obj){
+		var pwd1 =obj.value;
+		var pwd2 = document.register.password.value;
+		if(pwd1.length == 0){
+			document.getElementById("password").innerHTML = "<font color = 'red'>PassWord can not be EMPTY!!!</font>"
+		}
+		if(pwd1 != pwd2){
+			document.getElementById("password2").innerHTML = "<font color = 'red'>Two PassWords are DIFFERENT!!!</font>"
+		}
+		else{
+			flag3 = true;
+			document.getElementById("password2").innerHTML = "<font color = 'green'>Great!!!</font>"
+		}
+	}
+
+	var submit = function(){
+		if(flag1&&flag2&&flag3)
+			document.register.submit();
+		else
+			alert("Please enter all the information!!!");
+	}
+
+	/*
+	var reset = function(){
+		document.register.username.value = "";
+		document.register.password.value = "";  
+    	document.register.passwordAgain.value = "";
+    	document.getElementById("userName").innerHTML = "";
+    	document.getElementById("password1").innerHTML = "";
+    	document.getElementById("password2").innerHTML = "";
+	}*/
+
+
+	</script>
+</head>
+
+<body>
+	<form method="POST" name="register" action=" ">  
+		<table style="height: 100%; width: 100%">  
+		    <tr align="center" valign="middle">  
+		        <td>  
+		        <TABLE width="500" height="200" border=0 align="center" cellPadding=0  
+		            cellSpacing=0 
+		            <TBODY>  
+		                <TR valign="middle" align="center">  
+		                    <TD colSpan=3 height=40 valign="middle" align="center"><font  
+		                        face="" size="4px" color="#196ed1"  
+		                        style="padding-left: 20px; vertical-align: middle">Sign Up</font>
+		                    </TD>  
+		                </TR>  
+		                <tr>  
+		                    <td width="80" height="20" valign="middle" align="center" class="login_td">   UserName:</td>  
+		                    <td width="120" height="20" valign="middle" align="center" class="login_td"><input  
+		                        type="text" name="username" value="" style="WIDTH: 110px"  
+		                        onBlur="judgement1(this)"></td>  
+		                    <td width="200" height="20" valign="middle" align="center" id="userName"></td>  
+		                </tr>  
+		                <tr>  
+		                    <td height="20" valign="middle" align="center" class="login_td">   PassWord:</td>  
+		                    <td height="20" valign="middle" align="center" class="login_td"><input type="password"  
+		                        name="password" value="" style="WIDTH: 110px"  
+		                        onBlur="judgement2(this)"></td>  
+		                    <td width="200" height="20" valign="middle" align="center" id="password1"></td>  
+		                </tr>  
+		                <tr>  
+		                    <td height="20" valign="middle" align="center" class="login_td">   PassWord Again:</td>  
+		                    <td height="20" valign="middle" align="center" class="login_td"><input type="password"  
+		                        name="passwordAgain" value="" style="WIDTH: 110px"  
+		                        onBlur="judgement3(this)"></td>  
+		                    <td width="200" height="20" valign="middle" align="center" id="password2"></td>  
+		                </tr>  
+		                <tr>  
+		                    <td height="20" colspan="2" align="center">   
+		                    <!--                   
+		                    <button class="login_button" onClick=reset();>Reset</button>  
+		                     
+		                    <input type="reset" onclick=reset();>
+		                	-->
+		                    <button class="login_button" onClick=submit();>Submit</button>  
+		                     </td>   
+		                </tr>  
+		            </TBODY>  
+		        </TABLE>  
+		        </td>  
+		    </tr>  
+		</table>  
+	</form>  
+</body>
+
+
+</html>
